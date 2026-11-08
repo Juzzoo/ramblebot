@@ -8,23 +8,27 @@ import java.util.Scanner;
  */
 public class LowercaseSentenceTokenizer implements Tokenizer {
 
-    public List<String> tokenize(Scanner scanner) { 
-      List<String> tokens = new ArrayList<>();
-      while (scanner.hasNext()) {
-        String token = scanner.next();
-        
-        token = token.toLowerCase();
-        
+    public List<String> tokenize(Scanner scanner) {
+    List<String> tokens = new ArrayList<>();
+
+    while (scanner.hasNext()) {
+        String token = scanner.next().toLowerCase();
+
         if (token.endsWith(".")) {
-          
-          tokens.add(token.substring(0, token.length() - 1));
-          tokens.add(".");
+            String word = token.substring(0, token.length() - 1);
+
+            if (!word.isEmpty()) {
+                tokens.add(word);
+            }
+
+            tokens.add(".");
         } else {
-          
-          tokens.add(token);
+            tokens.add(token);
         }
-      }
-      return tokens;
+    }
+
+    return tokens;
+
 
 
     }
