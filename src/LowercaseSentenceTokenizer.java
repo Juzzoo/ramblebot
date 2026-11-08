@@ -8,19 +8,19 @@ import java.util.Scanner;
  */
 public class LowercaseSentenceTokenizer implements Tokenizer {
 
-    public List<String> tokenize(Scanner scanner) { 
+    public List<String> tokenizer(Scanner scanner) { 
       List<String> tokens = new ArrayList<>();
       while (scanner.hasNext()); {
         String token = scanner.next();
-        // Convert the token to lowercase
+        
         token = token.toLowerCase();
-        // Check if the token ends with a period
+        
         if (token.endsWith(".")) {
-          // If it does, add the word without the period and then add the period as a separate token
+          
           tokens.add(token.substring(0, token.length() - 1));
           tokens.add(".");
         } else {
-          // Otherwise, just add the token as is
+          
           tokens.add(token);
         }
       }
@@ -52,7 +52,8 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
    * @param scanner the Scanner to read the input text from
    * @return a list of tokens, where each token is a word or a period
    */
-  public List<String> tokenize(Scanner scanner) {
+  public List<String> tokenize(Scanner scanner) { 
+
     // TODO: Implement this function to convert the scanner's input to a list of words and periods
     return null;
   }
