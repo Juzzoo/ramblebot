@@ -62,5 +62,16 @@ class LowercaseSentenceTokenizerTest {
 
         assertEquals(List.of("hello", "world", ".", "this", "is", "dr.smith's", "example", "."), tokens);
     }
+    @Test
+void testOnlyPeriod() {
+    LowercaseSentenceTokenizer tokenizer =
+        new LowercaseSentenceTokenizer();
+
+    Scanner scanner = new Scanner(".");
+
+    List<String> tokens = tokenizer.tokenize(scanner);
+
+    assertEquals(List.of("."), tokens);
+}
     
 }
