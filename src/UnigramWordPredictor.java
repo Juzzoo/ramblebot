@@ -117,10 +117,27 @@ public class UnigramWordPredictor implements WordPredictor {
    * @return the predicted next word
    */
   public String predictNextWord(List<String> context) {
-    // TODO: Return a predicted word given the words preceding it
-    // Hint: only the last word in context should be looked at
-    return null;
-  }
+    Random random = new Random();
+
+    if (context == null || context.isEmpty()) {
+        List<String> words = new ArrayList<>(neighborMap.keySet());
+        return words.get(random.nextInt(words.size()));
+    }
+
+    String lastWord = context.get(context.size() - 1);
+
+    if (neighborMap.containsKey(lastWord)) {
+        List<String> nextWords = neighborMap.get(lastWord);
+
+        int randomIndex = random.nextInt(nextWords.size());
+
+        return nextWords.get(randomIndex);
+    }
+
+    List<String> words = new ArrayList<>(neighborMap.keySet());
+
+    return words.get(random.nextInt(words.size()));
+}
   
   /**
    * Returns a copy of the neighbor map. The neighbor map is a mapping 
